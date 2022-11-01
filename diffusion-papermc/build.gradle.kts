@@ -17,13 +17,15 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("com.github.shynixn.mccoroutine:mccoroutine-bukkit-api:2.5.0")
+    implementation("com.github.shynixn.mccoroutine:mccoroutine-bukkit-core:2.5.0")
 
-    compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
     compileOnly("dev.jorel:commandapi-core:8.5.1")
     compileOnly("de.tr7zw:item-nbt-api-plugin:2.10.0")
 
     implementation(project(":diffusion-core"))
-    implementation("com.github.devngho:nplug:0.1-alpha35")
+    implementation("com.github.devngho:nplug:0.1-alpha40")
 }
 
 java {
@@ -34,10 +36,15 @@ bukkit {
     name = "diffusion"
     version = "v1.0.0"
     main = "com.github.devngho.diffusion.papermc.Plugin"
-    apiVersion = "1.18"
+    apiVersion = "1.19"
     authors = listOf("ngho")
     depend = listOf("CommandAPI", "NBTAPI")
-    libraries = listOf("org.jetbrains.kotlin:kotlin-reflect:1.6.10", "org.jetbrains.kotlin:kotlin-stdlib:1.6.10")
+    libraries = listOf(
+        "org.jetbrains.kotlin:kotlin-reflect:1.6.10",
+        "org.jetbrains.kotlin:kotlin-stdlib:1.6.10",
+        "com.github.shynixn.mccoroutine:mccoroutine-bukkit-api:2.5.0",
+        "com.github.shynixn.mccoroutine:mccoroutine-bukkit-core:2.5.0"
+    )
 }
 
 tasks {

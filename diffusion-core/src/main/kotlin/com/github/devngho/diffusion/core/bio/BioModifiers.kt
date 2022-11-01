@@ -3,5 +3,5 @@
 package com.github.devngho.diffusion.core.bio
 
 interface BioModifiers {
-    fun BioProperty.apply(): BioProperty
+    fun apply(bio: BioProperty): BioProperty
 }

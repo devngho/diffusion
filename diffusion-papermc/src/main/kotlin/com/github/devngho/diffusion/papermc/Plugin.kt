@@ -5,6 +5,8 @@ import com.github.devngho.diffusion.core.map.Generator
 import com.github.devngho.diffusion.papermc.event.PlayerEvent
 import com.github.devngho.diffusion.papermc.game.PaperGame
 import com.github.devngho.diffusion.papermc.item.DiffusionItem
+import com.github.devngho.diffusion.papermc.map.MapRenderer
+import com.github.devngho.diffusion.papermc.player.PaperPlayerImpl
 import dev.jorel.commandapi.CommandAPICommand
 import dev.jorel.commandapi.CommandPermission
 import dev.jorel.commandapi.arguments.EntitySelectorArgument
@@ -19,24 +21,27 @@ import com.github.devngho.nplug.api.entity.Itemframe
 import com.github.devngho.nplug.impl.entity.ArmorstandImpl
 import com.github.devngho.nplug.impl.entity.FallingBlockImpl
 import com.github.devngho.nplug.impl.util.Direction
+import com.github.shynixn.mccoroutine.bukkit.launch
+import com.github.shynixn.mccoroutine.bukkit.registerSuspendingEvents
+import dev.jorel.commandapi.arguments.BooleanArgument
 import dev.jorel.commandapi.arguments.EntitySelector
+import dev.jorel.commandapi.arguments.IntegerArgument
 import dev.jorel.commandapi.arguments.MultiLiteralArgument
+import dev.jorel.commandapi.arguments.PlayerArgument
 import dev.jorel.commandapi.executors.PlayerCommandExecutor
-import kotlinx.coroutines.runBlocking
+import net.kyori.adventure.text.Component
 import org.bukkit.plugin.java.JavaPlugin
-import kotlin.concurrent.thread
 
 class Plugin : JavaPlugin() {
     companion object {
         lateinit var plugin: JavaPlugin
+        var game: PaperGame? = null
     }
-
-    var game: PaperGame? = null
 
     override fun onEnable() {
         super.onEnable()
 
-        server.pluginManager.registerEvents(PlayerEvent(), this)
+        server.pluginManager.registerSuspendingEvents(PlayerEvent(), this)
     }
 
     override fun onLoad() {
@@ -49,9 +54,9 @@ class Plugin : JavaPlugin() {
                 CommandAPICommand("start")
                     .withPermission(CommandPermission.OP)
                     .withArguments(EntitySelectorArgument<Collection<Player>>("player", EntitySelector.MANY_PLAYERS))
-                    .executesNative(NativeCommandExecutor { sender, args ->
+                    .executesPlayer(PlayerCommandExecutor { sender, args ->
                         val players = (args[0] as Collection<*>).toList().filterIsInstance<Player>().toMutableList()
-                        game = PaperGame(players, sender.location, this)
+                        game = PaperGame(players, sender.location, this, sender)
                     })
             )
             .withSubcommand(
@@ -60,10 +65,8 @@ class Plugin : JavaPlugin() {
                     .executesNative(NativeCommandExecutor { _, _ ->
                         val g = game
                         if (g != null) {
-                            thread {
-                                runBlocking{
-                                    Turn(g).processTurn(this)
-                                }
+                            launch {
+                                Turn(g).processTurn(this)
                             }
                         }
                     })
@@ -71,37 +74,32 @@ class Plugin : JavaPlugin() {
             .withSubcommand(
                 CommandAPICommand("debug")
                     .withSubcommand(
+                        CommandAPICommand("animals")
+                            .withPermission(CommandPermission.OP)
+                            .executesNative(NativeCommandExecutor { sender, _ ->
+                                game?.run {
+                                    this.animals.forEach {
+                                        sender.sendMessage(Component.text("${it.uuid} : ${it.uuid} ${it.color} ${it.power} ${it.diffusion}"))
+                                    }
+                                }
+                            })
+                    )
+                    .withSubcommand(
                         CommandAPICommand("generate")
                             .withPermission(CommandPermission.OP)
                             .executesNative(NativeCommandExecutor { sender, _ ->
                                 val map = Generator.generate()
 
-                                map.map.forEachIndexed { x, list ->
-                                    list.forEachIndexed { y, v ->
-                                        val loc = sender.location.clone().apply {
-                                            this.x += x
-                                            this.z += y
-                                        }
-
-                                        when(v.id){
-                                            "hill" -> {
-                                                loc.block.type = Material.STONE
-                                                loc.apply { this.y += 1 }.block.type = Material.STONE
-                                            }
-                                            "normal" -> {
-                                                loc.block.type = Material.GRASS_BLOCK
-                                            }
-                                            "water" -> {
-                                                loc.block.type = Material.WATER
-                                            }
-                                            "mountain" -> {
-                                                loc.block.type = Material.STONE
-                                                loc.apply { this.y += 1 }.block.type = Material.STONE
-                                                loc.apply { this.y += 1 }.block.type = Material.STONE
-                                                loc.apply { this.y += 1 }.block.type = Material.STONE
-                                                loc.apply { this.y += 1 }.block.type = Material.SNOW
-                                            }
-                                        }
+                                MapRenderer.render(map.map, sender.location.apply { y -= 1 })
+                            })
+                    )
+                    .withSubcommand(
+                        CommandAPICommand("skip")
+                            .withPermission(CommandPermission.OP)
+                            .executesPlayer(PlayerCommandExecutor { sender, _ ->
+                                if (game != null){
+                                    game?.player?.find { (it as PaperPlayerImpl).player.uniqueId == sender.uniqueId }?.run {
+                                        (this as PaperPlayerImpl).skip = !this.skip
                                     }
                                 }
                             })
@@ -181,6 +179,45 @@ class Plugin : JavaPlugin() {
                             .executesNative(NativeCommandExecutor { s, a ->
                                 val str = (a[0] as String)
                                 s.location.world.dropItem(s.location, DiffusionItem.values().find { it.id == str }!!.item)
+                            })
+                    )
+                    .withSubcommand(
+                        CommandAPICommand("reload")
+                            .withPermission(CommandPermission.OP)
+                            .withArguments(BooleanArgument("show"))
+                            .executesPlayer(PlayerCommandExecutor { s, args ->
+                                game?.run {
+                                    this.mapAnimalRender.itemFrameMap.flatten().forEach {
+                                        if (!(args[0] as Boolean)) it.removePlayer(s)
+                                        else it.addPlayer(s)
+                                        it.updateMeta()
+                                        // it.updateLocation()
+                                    }
+                                }
+                            })
+                    )
+                    .withSubcommand(
+                        CommandAPICommand("add")
+                            .withPermission(CommandPermission.OP)
+                            .withArguments(PlayerArgument("player"))
+                            .executesNative(NativeCommandExecutor { _, a ->
+                                val p = a[0] as Player
+                                game?.bukkitPlayers?.add(p)
+                            })
+                    )
+                    .withSubcommand(
+                        CommandAPICommand("setdiffusion")
+                            .withPermission(CommandPermission.OP)
+                            .withArguments(MultiLiteralArgument(*(com.github.devngho.diffusion.core.util.Color.values().map { it.name })
+                                .toTypedArray()), IntegerArgument("diffusion"), IntegerArgument("power"))
+                            .executesNative(NativeCommandExecutor { _, a ->
+                                val c = com.github.devngho.diffusion.core.util.Color.values().find { it.name == a[0] as String }
+                                game?.animals?.find {
+                                    it.color == c
+                                }?.run {
+                                    this.diffusion = a[1] as Int
+                                    this.power = a[2] as Int
+                                }
                             })
                     )
             ).register()

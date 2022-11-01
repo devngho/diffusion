@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 
 class PlayerEvent : Listener {
     @EventHandler
-    fun onInteraction(event: PlayerInteractEvent) {
+    suspend fun onInteraction(event: PlayerInteractEvent) {
         if (event.hasItem()){
             event.item!!.toDiffusionItem()?.run {
                 this.onInteraction(event)

@@ -4,7 +4,7 @@ import com.github.devngho.diffusion.core.util.Color
 import org.bukkit.Material
 
 object Color {
-    fun ColorToConcrete(color: Color): Material{
+    fun colorToConcrete(color: Color): Material{
         return when(color){
             Color.WHITE -> Material.WHITE_CONCRETE
             Color.ORANGE -> Material.ORANGE_CONCRETE

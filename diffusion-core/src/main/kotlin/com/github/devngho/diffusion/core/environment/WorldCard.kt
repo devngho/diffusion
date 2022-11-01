@@ -11,8 +11,8 @@ sealed interface WorldCard : BioModifiers {
     class SuitableDiffusion : WorldCard{
         override val id: String = "suitable_diffusion"
 
-        override fun BioProperty.apply(): BioProperty {
-            return this.clone().apply {
+        override fun apply(bio: BioProperty): BioProperty {
+            return bio.clone().apply {
                 this.diffusion *= (3/2)
             }
         }
@@ -21,8 +21,8 @@ sealed interface WorldCard : BioModifiers {
     class UnsuitableDiffusion : WorldCard{
         override val id: String = "unsuitable_diffusion"
 
-        override fun BioProperty.apply(): BioProperty {
-            return this.clone().apply {
+        override fun apply(bio: BioProperty): BioProperty {
+            return bio.clone().apply {
                 this.diffusion *= (3/4)
             }
         }

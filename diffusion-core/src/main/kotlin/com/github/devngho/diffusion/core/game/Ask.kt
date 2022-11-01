@@ -23,6 +23,7 @@ sealed interface Ask<T> {
              * [uuid]를 가진 동물의 [Animal.options]를 [options]로 변경하는 AskData.
              */
             class Modify constructor(val player: Player, val uuid: UUID, val options: MutableList<BioOptions>) : AskAnimalData
+            class Skip : AskAnimalData
         }
 
         override val id: String = "ask_animal"

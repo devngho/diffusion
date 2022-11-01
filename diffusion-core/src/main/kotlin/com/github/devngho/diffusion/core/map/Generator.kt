@@ -22,7 +22,7 @@ object Generator {
 
         noiseData.forEachIndexed { x, doubles ->
             doubles.forEachIndexed { _, v ->
-                map.map[x].add(if (v > 0.7) Tile.mountain else if(v > 0.4) Tile.hill else if (v > -0.5) Tile.normal else Tile.normal)
+                map.map[x].add(if (v > 0.6) Tile.mountain else if(v > 0.3) Tile.hill else if (v > -0.5) Tile.normal else Tile.normal)
             }
         }
 

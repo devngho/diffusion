@@ -8,9 +8,9 @@ import com.github.devngho.diffusion.core.bio.BioProperty
 class Water : Tile {
     override val id: String = "water"
 
-    override fun BioProperty.apply(): BioProperty {
-        val b = this.clone()
-        if (!this.options.contains(BioOptions.WaterFriendly)) b.diffusion /= 2
+    override fun apply(bio: BioProperty): BioProperty {
+        val b = bio.clone()
+        if (!bio.options.contains(BioOptions.WaterFriendly)) b.diffusion /= 2
         return b
     }
 }

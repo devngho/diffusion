@@ -7,7 +7,7 @@ interface BioProperty : Cloneable{
     var power: Int
     val fightPower: Int
     get() {
-        return diffusion * power
+        return diffusion + power
     }
 
     val options: MutableList<BioOptions>

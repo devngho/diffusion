@@ -8,4 +8,5 @@ import java.util.UUID
 interface Animal : BioProperty {
     val uuid: UUID
     val color: Color
+    var canDiffusion: Boolean
 }

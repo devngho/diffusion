@@ -1,5 +1,7 @@
 package com.github.devngho.diffusion.core.map
 
+import kotlin.math.sqrt
+
 /*
  * A speed-improved simplex noise algorithm for 2D, 3D and 4D in Java.
  *
@@ -36,7 +38,7 @@ object SimplexNoise {
 			new Grad(-1,1,0,1),new Grad(-1,1,0,-1),new Grad(-1,-1,0,1),new Grad(-1,-1,0,-1),
 			new Grad(1,1,1,0),new Grad(1,1,-1,0),new Grad(1,-1,1,0),new Grad(1,-1,-1,0),
 			new Grad(-1,1,1,0),new Grad(-1,1,-1,0),new Grad(-1,-1,1,0),new Grad(-1,-1,-1,0)};*/
-    private val p = (1..256).shuffled().map { it.toShort() }.toTypedArray()
+    private val p = (0..256).shuffled().map { it.toShort() }.toTypedArray()
 
     // To remove the need for index wrapping, double the permutation table length
     private val perm = ShortArray(512)
@@ -50,15 +52,15 @@ object SimplexNoise {
     }
 
     // Skewing and unskewing factors for 2, 3, and 4 dimensions
-    private val F2 = 0.5 * (Math.sqrt(3.0) - 1.0)
-    private val G2 = (3.0 - Math.sqrt(3.0)) / 6.0
+    private val F2 = 0.5 * (sqrt(3.0) - 1.0)
+    private val G2 = (3.0 - sqrt(3.0)) / 6.0
 
     /*	private static final double F3 = 1.0/3.0;
 	private static final double G3 = 1.0/6.0;
 	private static final double F4 = (Math.sqrt(5.0)-1.0)/4.0;
 	private static final double G4 = (5.0-Math.sqrt(5.0))/20.0;*/
     // This method is a *lot* faster than using (int)Math.floor(x)
-    private fun fastfloor(x: Double): Int {
+    private fun fastFloor(x: Double): Int {
         val xi = x.toInt()
         return if (x < xi) xi - 1 else xi
     }
@@ -78,8 +80,8 @@ object SimplexNoise {
         val n2: Double // Noise contributions from the three corners
         // Skew the input space to determine which simplex cell we're in
         val s = (xin + yin) * F2 // Hairy factor for 2D
-        val i = fastfloor(xin + s)
-        val j = fastfloor(yin + s)
+        val i = fastFloor(xin + s)
+        val j = fastFloor(yin + s)
         val t = (i + j) * G2
         val X0 = i - t // Unskew the cell origin back to (x,y) space
         val Y0 = j - t
