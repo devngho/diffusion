@@ -86,8 +86,6 @@ core부터 coroutine로 구현됩니다.
 
 [https://github.com/devngho/diffusion](https://github.com/devngho/diffusion)
 
-[제목 없음](https://www.notion.so/ea23889d90174a9bbf8006859234b581)
-
 ### core
 
 턴 처리
