@@ -4,9 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9ed0ba8c-b37e-4ef0-a187-d5cda72db82e" name="Changes" comment="maven">
+    <list default="true" id="9ed0ba8c-b37e-4ef0-a187-d5cda72db82e" name="Changes" comment="build">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/bio/Animal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/bio/Animal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/bio/BigAnimal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/bio/BigAnimal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/bio/BioModifiers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/bio/BioModifiers.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/bio/BioOptions.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/bio/BioOptions.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/bio/BioProperty.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/bio/BioProperty.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/bio/SmallAnimal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/bio/SmallAnimal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/environment/Climate.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/environment/Climate.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/environment/WorldCard.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/environment/WorldCard.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/game/AnimalMap.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/game/AnimalMap.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/game/Ask.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/game/Ask.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/game/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/game/Game.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/game/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/game/Player.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/game/Point.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/game/Point.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/game/Turn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/game/Turn.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/map/Generator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/map/Generator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/map/Hill.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/map/Hill.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/map/Map.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/map/Map.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/map/Mountain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/map/Mountain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/map/Normal.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/map/Normal.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/map/SimplexNoise.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/map/SimplexNoise.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/map/Tile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/map/Tile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/map/Water.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/map/Water.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/main/kotlin/com/github/devngho/diffusion/core/util/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/com/github/devngho/diffusion/core/util/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/diffusion-core/src/test/kotlin/com/github/devngho/diffusion/core/game/TurnTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/com/github/devngho/diffusion/core/game/TurnTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +74,12 @@
                 <item name="diffusion" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="diffusion" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -113,6 +146,7 @@
       <recent name="D:\dev\mc\plugins\diffusion\diffusion-papermc\run" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\dev\mc\plugins\diffusion" />
       <recent name="D:\dev\mc\plugins\diffusion\diffusion-core\src\test\java\com\github\devngho\diffusion\core" />
       <recent name="D:\dev\mc\plugins\diffusion\diffusion-core\src\test\resources" />
       <recent name="D:\dev\mc\plugins\diffusion\diffusion-papermc\run\plugins" />
@@ -132,7 +166,28 @@
       <recent name="com.github.devngho.diffusion.core.map" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.diffusion:diffusion-papermc [runServer]">
+  <component name="RunManager" selected="Gradle.diffusion [assemble]">
+    <configuration name="diffusion [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assemble" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="diffusion [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -154,10 +209,10 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="diffusion:diffusion-papermc [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="diffusion:diffusion-core [sourcesJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/diffusion-papermc" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/diffusion-core" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -165,7 +220,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="sourcesJar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -187,27 +242,6 @@
         <option name="taskNames">
           <list>
             <option value="cleanPaperclipCache" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="diffusion:diffusion-papermc [generateBukkitPluginDescription]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/diffusion-papermc" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="generateBukkitPluginDescription" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -240,11 +274,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.diffusion [assemble]" />
+        <item itemvalue="Gradle.diffusion [clean]" />
+        <item itemvalue="Gradle.diffusion:diffusion-core [sourcesJar]" />
         <item itemvalue="Gradle.diffusion:diffusion-papermc [runServer]" />
         <item itemvalue="Gradle.diffusion:diffusion-papermc [cleanPaperclipCache]" />
-        <item itemvalue="Gradle.diffusion:diffusion-papermc [generateBukkitPluginDescription]" />
-        <item itemvalue="Gradle.diffusion [clean]" />
-        <item itemvalue="Gradle.diffusion:diffusion-papermc [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667620855376</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="build">
+      <created>1667621075594</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667621075594</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -301,7 +342,8 @@
     <MESSAGE value="init" />
     <MESSAGE value="core" />
     <MESSAGE value="maven" />
-    <option name="LAST_COMMIT_MESSAGE" value="maven" />
+    <MESSAGE value="build" />
+    <option name="LAST_COMMIT_MESSAGE" value="build" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

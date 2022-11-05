@@ -2,7 +2,6 @@
 
 package com.github.devngho.diffusion.core.map
 
-import com.github.devngho.diffusion.core.bio.BioOptions
 import com.github.devngho.diffusion.core.bio.BioProperty
 
 class Mountain : Tile {

@@ -13,15 +13,27 @@ repositories {
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.0")
+    implementation(kotlin("stdlib"))
+
     testImplementation(kotlin("test"))
 }
 
-tasks.test {
-    useJUnitPlatform()
+java {
+    withSourcesJar()
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "17"
+tasks {
+    getByName<Test>("test") {
+        useJUnitPlatform()
+        testLogging.showStandardStreams = true
+    }
+    withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "17"
+    }
 }
 
 publishing {
