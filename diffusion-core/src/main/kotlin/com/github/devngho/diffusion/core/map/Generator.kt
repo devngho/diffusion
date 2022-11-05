@@ -3,7 +3,7 @@
 package com.github.devngho.diffusion.core.map
 
 object Generator {
-    private const val fq = 15.0;
+    private const val fq = 0.3
 
     fun generate(): Map{
         val noiseData = mutableListOf<MutableList<Double>>()
@@ -22,7 +22,8 @@ object Generator {
 
         noiseData.forEachIndexed { x, doubles ->
             doubles.forEachIndexed { _, v ->
-                map.map[x].add(if (v > 0.6) Tile.mountain else if(v > 0.3) Tile.hill else if (v > -0.5) Tile.normal else Tile.normal)
+                // println(v)
+                map.map[x].add(if (v > 0.7) Tile.mountain else if(v > 0.4) Tile.hill else if (v > -0.4) Tile.normal else Tile.water)
             }
         }
 

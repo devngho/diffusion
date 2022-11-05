@@ -11,6 +11,6 @@ interface Tile : Cloneable, BioModifiers{
         val hill = Hill()
         val mountain = Mountain()
         val normal = Normal()
-        // val water = Water()
+        val water = Water()
     }
 }

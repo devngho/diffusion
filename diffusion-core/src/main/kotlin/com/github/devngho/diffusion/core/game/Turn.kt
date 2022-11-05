@@ -39,9 +39,15 @@ class Turn(val game: Game) {
     private fun processTurn(asks: MutableList<Ask.AskAnimal.AskAnimalData>){
         asks.forEach {
             if (it is Ask.AskAnimal.AskAnimalData.AddNew){
-                game.animalMap.map[it.loc.x][it.loc.y].run {
-                    animal = it.animal
-                    health = it.animal.power
+                (-1..1).forEach { x ->
+                    (-1..1).forEach { y ->
+                        if ((0..63).contains(it.loc.x + x) && (0..63).contains(it.loc.y + y)){
+                            game.animalMap.map[it.loc.x + x][it.loc.y + y].run {
+                                animal = it.animal
+                                health = it.animal.power
+                            }
+                        }
+                    }
                 }
                 it.player.animals.add(it.animal)
                 game.animals.add(it.animal)

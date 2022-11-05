@@ -21,7 +21,7 @@ class TurnTest {
             val p1 = PlayerTestImpl("p1") { p, it ->
                 when(it){
                     is Ask.AskAnimal -> {
-                        it.data.send(Ask.AskAnimal.AskAnimalData.AddNew(p, Point(1, 1), BigAnimal(UUID.randomUUID())))
+                        it.data.send(Ask.AskAnimal.AskAnimalData.AddNew(p, Point(1, 1), BigAnimal(UUID.randomUUID(), p)))
                     }
                 }
             }
