@@ -23,3 +23,15 @@ tasks.test {
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "17"
 }
+
+publishing {
+    publications {
+        create <MavenPublication>("maven") {
+            groupId = project.group as String
+            artifactId = "diffusion"
+            version = project.version as String
+
+            from(components["kotlin"])
+        }
+    }
+}
